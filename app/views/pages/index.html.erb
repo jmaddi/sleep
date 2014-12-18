@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag 'sleep_icon.png', class: 'sleep-icon' %>
+      <span class="lead">I am currently
+      <span class="h1"><%= @current_state[:title] %></span>,
+      and I have been for the past
+      <span class="h2"><%= friendly_duration(@current_state[:duration]) %></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Sleep History</h4>
+      <table class="table">
+        <tbody>
+          <% @sleep_periods.each do |period| %>
+          <tr>
+            <td><%= period.starts_at.localtime.strftime('%-d %B %l:%M%P') %></td>
+            <td><%= friendly_duration(period.ends_at - period.starts_at) %></td>
+          </tr>
+          <% end %>
+<!--
+          <tr>
+            <td>13 December 11:21pm</td>
+            <td>50 minutes</td>
+          </tr>
+          <tr>
+            <td>14 December 10:43pm</td>
+            <td>8 hours 10 minutes</td>
+          </tr>
+-->
+        </tbody>
+      </div>
+    </div>
+  </table>
+
+  <small>Last Updated: <mark>2014-09-01 12:33</mark></small>
+</div>
